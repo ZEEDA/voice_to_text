@@ -6,7 +6,6 @@ import SpeechRecognition, {
 
 function App() {
   const [lang, setLang] = useState("en-US");
-  const [listining, setListining] = useState(false);
   const [note, setNote] = useState("");
   const [sevedNote, setSevedNote] = useState([]);
   const {
@@ -19,7 +18,7 @@ function App() {
 
   useEffect(() => {
     if (finalTranscript !== "") {
-      console.log("Got final result:", finalTranscript);
+      // console.log("Got final result:", finalTranscript);
     }
   }, [interimTranscript, finalTranscript]);
 
@@ -57,7 +56,7 @@ function App() {
     <>
       <div className="container">
         <header>
-          <h1>{listining ? "Listining..." : "Start Now!"}</h1>
+          <h1>{listening ? "listening..." : "Start Now!"}</h1>
           {listening ? (
             <button type="button" onClick={SpeechRecognition.stopListening}>
               <svg
@@ -73,7 +72,7 @@ function App() {
               <span className="text">Stop</span>
             </button>
           ) : (
-            <button type="button" onClick={()=>listenContinuously(lang)}>
+            <button type="button" onClick={() => listenContinuously(lang)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -92,8 +91,11 @@ function App() {
             name="lang"
             id=""
             onChange={(e) => {
-              let _value = e.currentTarget.value
+              let _value = e.currentTarget.value;
               setLang(_value);
+              if (!listening) {
+                return;
+              }
               SpeechRecognition.stopListening();
               setTimeout(() => {
                 listenContinuously(_value);
@@ -114,7 +116,7 @@ function App() {
           onChange={(e) => {
             setNote(e.target.value);
           }}
-          dir = {lang.split('-')[0] == 'ar'? 'rtl':''}
+          dir={lang.split("-")[0] === "ar" ? "rtl" : ""}
         ></textarea>
       </div>
       <div className="container">
