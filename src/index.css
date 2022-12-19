@@ -6,8 +6,74 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+*{
+  box-sizing: border-box;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  box-shadow: 0 8px 19px rgba(0,0,0, 0.22);
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 750px;
+  margin: 2rem auto;
+}
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container textarea{
+  width: calc(100% - 64px);
+  border: 1px solid #ddd;
+  margin: 32px auto;
+  min-height: 250px;
+  padding: 16px;
+  border-radius: 8px;
+}
+/* .container textarea:hover, */
+.container textarea:focus{
+  outline: none;
+  border-color: #fec20e;
+}
+
+.container header{
+  width: 100%;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+.container header h1{
+  margin: 0;
+  font-size: 1.5rem;
+}
+.container header button{
+  margin-inline-start: auto;
+  border: 1px solid transparent;
+  /* background-color: ; */
+  padding: 0 16px;
+  line-height: 32px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 300ms ease;
+  display: flex;
+  align-items: center;
+}
+.container header button svg{
+  width: 22px;
+  height: 22px;
+}
+.container header button:hover{
+  box-shadow: 0 2px 4px rgba(0,0,0, 0.16);
+}
+.container header button+button{
+  margin-inline-start: 8px;
+}
+.warn{
+  background-color: #fff1c7;
+  color: #e0a904;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+@media (max-width: 776px) {
+  .container{
+    margin: 1rem;
+  }
 }
