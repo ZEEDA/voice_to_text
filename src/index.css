@@ -40,6 +40,14 @@ body {
   display: flex;
   align-items: center;
 }
+.container header select{
+  height: 34px;
+  margin-inline-start: 8px;
+  background-color: #efefef;
+  border: none;
+  border-radius: 4px;
+  padding: 0 4px;
+}
 .container header h1{
   margin: 0;
   font-size: 1.5rem;
